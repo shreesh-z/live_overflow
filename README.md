@@ -1,62 +1,101 @@
-# Python dependencies:
-Pygame, OpenCV, mido. Preferably run it in linux.
-Tested only on arch linux & ubuntu studio.
+# Live Overflow – Setup & Controls
 
-# For audio reactivity:
-Run mixxx in developer mode and use the "MIDI for light" mapping on the Midi through port-0 in preferences. Run mixxx as "mixxx --developer" in the terminal for dev mode.
-This mapping will report current bpm, deck change, beat detection and average mono volume thru midi.
+## Dependencies
+- Python libraries:
+  - `pygame`
+  - `opencv-python`
+  - `mido`
+- Recommended environment:
+  - Linux (tested on **Arch Linux** and **Ubuntu Studio**)
 
-# For live VJ'ing:
-Connect an xbox controller. This will run as a controller even if pg window is out of focus.
-    For Video Input:
-        Start  : go to next video bank
-        Select : go to prev video bank
-        DLeft  : go to prev video inside a given bank
-        DRight : go to next video inside a given bank
-        LT     : change framerate between 15-30fps
-    For filters:
-        DUp : prev filter
-        DDn : next filter
-        A   : toggle filter change based on midi beat detection
-        LS  : Change brightness (LSY) and contrast (LSX)
-    Visuals meta-modes:
-        X   : toggle blending
-        Y   : toggle overflow
-        RSB : rgb channel roll increment
-        B   : toggle rgb channel roll based on midi beat detection
-        RS  : Change channel roll based on stick angle (every 60 degrees)
-	    RT  : change audio reactivity factor between (1-32)/32
+---
 
-Keyboard controls (won't run asynchronously if pygame window not in focus):
-    For video input
-        tab  : increment video bank (rolls back to 0)
-        shft : go to prev video inside a given bank
-        ctrl : go to next video inside a given bank
-        [    : decrease framerate
-        ]    : increase framerate
-        =    : reset framerate to 15
-    For filters:
-        q  : ip chain mode back
-        a  : ip chain mode front
-        s  : toggle filter change based on midi beat detection
-    Visuals meta-modes:
-        w  : toggle blending
-        o  : toggle overflow
-        x  : rgb channel roll increment
-        d  : toggle rgb channel roll based on midi beat detection
-    Audio reactivity related
-        z  : toggle audio reactivity
-        ;  : reduce audio reactivity factor
-        '  : increase audio reactivity factor
-        /  : reset audio reactivity to lowest factor
-    
-    esc  : quit
+## Audio Reactivity Setup
 
-# How to run
-Load your own videos into a folder named "videos", add their references in the config file.
-Add camera numbers to the "cameras" section.
-Add your own filters on top of the placeholder filters.
+1. Run mixxx in developer mode:
+```bash
+mixxx --developer
+```
 
-Run "python main_mp.py" in the terminal.
-Run mixxx in dev mode (as mentioned above) to get audio reactivity.
-Closing the pygame window closes the app. If not fully closed, use ctrl+C.
+2. In Mixxx:
+- Select MIDI Through Port-0 in preferences
+- Enable "MIDI for light" mapping
+- This mapping sends (via midi):
+  - BPM
+  - Deck changes
+  - Beat detection
+  - Average mono volume
+
+## Xbox Controller (Live VJ Controls)
+
+Works even if the Pygame window is out of focus.
+
+# Video Input
+  - Start: Next video bank
+  - Select: Previous video bank
+  - D-Left: Previous video in bank
+  - D-Right: Next video in bank
+  - LT: Toggle framerate (15-30 FPS)
+# Filters
+  - D-Up: Previous filter
+  - D-Down: Next filter
+  - A: Toggle beat-based filter switching
+  - Left Stick (LS)
+    - LSY: Brightness
+    - LSX: Contrast
+# Visual Meta Modes
+  - X: Toggle blending
+  - Y: Toggle overflow
+  - RSB: Increment RGB channel roll
+  - B: Toggle beat-based RGB roll
+  - Right Stick (RS): Change RGB roll via angle (every 60°)
+  - RT: Adjust audio reactivity factor (1–32)/32
+
+## Keyboard Controls
+
+Only works when Pygame window is in focus.
+
+# Video Input
+  - Tab: Next video bank (loops to 0)
+  - Shift: Previous video in bank
+  - Ctrl: Next video in bank
+  - [: Decrease framerate
+  - ]: Increase framerate
+  - =: Reset framerate to 15 FPS
+# Filters
+  - Q: Previous IP chain mode
+  - A: Next IP chain mode
+  - S: Toggle beat-based filter switching
+# Visual Meta Modes
+  - W: Toggle blending
+  - O: Toggle overflow
+  - X: Increment RGB channel roll
+  - D: Toggle beat-based RGB roll
+# Audio Reactivity
+  - Z: Toggle audio reactivity
+  - ;: Decrease audio reactivity factor
+  - ': Increase audio reactivity factor
+  - /: Reset to lowest factor
+# Exit
+  - Esc: Quit application
+
+## How to Run
+# Add your media:
+  - Place videos inside a videos/ folder
+  - Register them in the config file
+  - Add camera indices in the "cameras" section
+  - Add/modify filters as needed in the filters.py file
+
+# Run the app:
+
+```bash
+python main_mp.py
+```
+
+Start Mixxx in dev mode for audio reactivity:
+
+```bash
+mixxx --developer
+```
+
+Closing the Pygame window should terminate the app. If it hangs, force quit with Ctrl + C.
