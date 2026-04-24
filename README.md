@@ -30,20 +30,20 @@ mixxx --developer
 
 Works even if the Pygame window is out of focus.
 
-# Video Input
+### Video Input
   - Start: Next video bank
   - Select: Previous video bank
   - D-Left: Previous video in bank
   - D-Right: Next video in bank
   - LT: Toggle framerate (15-30 FPS)
-# Filters
+### Filters
   - D-Up: Previous filter
   - D-Down: Next filter
   - A: Toggle beat-based filter switching
   - Left Stick (LS)
     - LSY: Brightness
     - LSX: Contrast
-# Visual Meta Modes
+### Visual Meta Modes
   - X: Toggle blending
   - Y: Toggle overflow
   - RSB: Increment RGB channel roll
@@ -55,38 +55,38 @@ Works even if the Pygame window is out of focus.
 
 Only works when Pygame window is in focus.
 
-# Video Input
+### Video Input
   - Tab: Next video bank (loops to 0)
   - Shift: Previous video in bank
   - Ctrl: Next video in bank
   - [: Decrease framerate
   - ]: Increase framerate
   - =: Reset framerate to 15 FPS
-# Filters
+### Filters
   - Q: Previous IP chain mode
   - A: Next IP chain mode
   - S: Toggle beat-based filter switching
-# Visual Meta Modes
+### Visual Meta Modes
   - W: Toggle blending
   - O: Toggle overflow
   - X: Increment RGB channel roll
   - D: Toggle beat-based RGB roll
-# Audio Reactivity
+### Audio Reactivity
   - Z: Toggle audio reactivity
   - ;: Decrease audio reactivity factor
   - ': Increase audio reactivity factor
   - /: Reset to lowest factor
-# Exit
+### Exit
   - Esc: Quit application
 
 ## How to Run
-# Add your media:
+### Add your media:
   - Place videos inside a videos/ folder
   - Register them in the config file
   - Add camera indices in the "cameras" section
   - Add/modify filters as needed in the filters.py file
 
-# Run the app:
+### Run the app:
 
 ```bash
 python main_mp.py
